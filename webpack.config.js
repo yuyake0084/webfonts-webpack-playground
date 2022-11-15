@@ -1,34 +1,38 @@
-const WebfontPlugin = require("webfont-webpack-plugin").default;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: path.resolve(__dirname, './src/entry.js'),
+  entry: path.resolve(__dirname, './config.font.js'),
   output: {
-    path: path.resolve(__dirname, "./build")
+    path: path.resolve(__dirname, "./build"),
+    publicPath: 'dist'
   },
-  plugins: [
-    new WebfontPlugin({
-      files: path.resolve(__dirname, './icons/**/*.svg'),
-      dest: path.resolve(__dirname, './fonts'),
-      destTemplate: path.resolve(__dirname, "./src/font.css"),
-      glyphTransformFn: (obj) => {
-        console.log('!!!!!!!', obj)
-
-        return obj;
-      }
-    })
-  ],
+  plugins: [new MiniCssExtractPlugin()],
   module: {
     rules: [
+      {
+        test: /\.font\.js/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            }
+          },
+          {
+            loader: 'webfonts-loader',
+            options: {
+              css: true,
+            }
+          }
+        ]
+      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
       },
-      {
-        loader: "url-loader",
-        test: /\.(svg|eot|ttf|woff|woff2)?$/
-      }
     ]
   }
 };

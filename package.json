@@ -6,11 +6,15 @@
   "author": "yuyake0084 <yuyake0084@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "yarn clean && webpack",
+    "clean": "rimraf ./build/*"
   },
   "devDependencies": {
     "css-loader": "^6.7.2",
+    "iconfont-plugin-webpack": "^1.1.4",
+    "iconfont-webpack-plugin": "^5.0.1",
     "mini-css-extract-plugin": "^2.6.1",
+    "rimraf": "^3.0.2",
     "style-loader": "^3.3.1",
     "webfont-webpack-plugin": "^1.0.0",
     "webfonts-loader": "^7.5.2",
