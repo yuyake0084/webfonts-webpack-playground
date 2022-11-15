@@ -1,0 +1,20 @@
+{
+  "name": "webfonts-webpack-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yuyake0084/webfonts-webpack-playground.git",
+  "author": "yuyake0084 <yuyake0084@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.2",
+    "mini-css-extract-plugin": "^2.6.1",
+    "style-loader": "^3.3.1",
+    "webfont-webpack-plugin": "^1.0.0",
+    "webfonts-loader": "^7.5.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
